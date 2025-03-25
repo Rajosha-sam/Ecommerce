@@ -1,0 +1,81 @@
+<body style="background-color:#f0f7ff;">
+  <div class="container mt-5">
+    <div class="row justify-content-center">
+      <div class="col-lg-6 col-md-8 col-sm-10">
+       
+        <div class="card shadow-lg rounded-4 p-4" style="background: linear-gradient(to bottom right, #69e0c9, #cc9dd5); border-radius: 20px;">
+          <form [formGroup]="productForm" (ngSubmit)="onSubmit()">
+
+            <h1 class="text-center mb-4 text-white font-weight-bold" style="font-family: 'Roboto', sans-serif; font-size: 2.2rem;">Product Form</h1>
+            
+         
+            <div class="form-group mb-3">
+              <label for="name" class="form-label text-dark font-weight-bold" style="font-size: 1rem;">Product Name<span style="color: red;">*</span></label>
+              <input id="name" type="text" formControlName="name" class="form-control" placeholder="Enter product name" required style="border-radius: 10px; padding: 10px;" />
+            </div>
+
+          
+            <div class="form-group mb-3">
+              <label for="description" class="form-label text-dark font-weight-bold" style="font-size: 1rem;">Description <span style="color: red;">*</span></label>
+              <textarea id="description" formControlName="description" class="form-control" placeholder="Enter product description" required style="border-radius: 10px; padding: 10px;"></textarea>
+            </div>
+
+            <div class="form-group mb-3">
+              <label for="price" class="form-label text-dark font-weight-bold" style="font-size: 1rem;">Price <span style="color: red;">*</span></label>
+              <input id="price" type="number" formControlName="price" class="form-control" placeholder="Enter product price" required style="border-radius: 10px; padding: 10px;" />
+            </div>
+
+            <div class="form-group mb-3">
+              <label for="stock" class="form-label text-dark font-weight-bold" style="font-size: 1rem;">Stock<span style="color: red;">*</span></label>
+              <input id="stock" type="number" formControlName="stock" class="form-control" placeholder="Enter product stock" required style="border-radius: 10px; padding: 10px;" />
+            </div>
+
+          
+            <div class="form-group mb-3">
+              <label for="category" class="form-label text-dark font-weight-bold" style="font-size: 1rem;">Category<span style="color: red;">*</span></label>
+              <input id="category" type="text" formControlName="category" class="form-control" placeholder="Enter product category" required style="border-radius: 10px; padding: 10px;" />
+            </div>
+
+           
+            <div class="form-group mb-3">
+              <label for="imageUrl" class="form-label text-dark font-weight-bold" style="font-size: 1rem;">
+                Image URL<span style="color: red;">*</span>
+              </label>
+            
+<!-- File Input for Image Upload -->
+<input type="file" (change)="onFileSelected($event)" accept="image/*" class="form-control"
+       style="border-radius: 10px; padding: 10px;" />
+
+<!-- Image Preview Directly Below the Input -->
+@if (selectedImageUrl) {
+  <div>
+    <img [src]="selectedImageUrl" 
+         alt="Product Image" class="img-thumbnail mt-2" 
+         style="width: 150px; height: 150px;">
+  </div>
+}   
+            <div class="form-group mb-3">
+              <label for="userId" class="form-label text-dark font-weight-bold" style="font-size: 1rem;">User ID<span style="color: red;">*</span></label>
+              <input id="userId" type="number" formControlName="userId" class="form-control" placeholder="Enter user ID" required style="border-radius: 10px; padding: 10px;" />
+            </div>
+
+            <div class="button-group mb-3 d-flex justify-content-between">
+              <input type="button" value="View List" class="btn btn-warning btn-custom rounded-3 shadow-sm" [routerLink]="['/viewlistt']" style="transition: 0.3s ease;"/>
+              <input type="button" value="LOGOUT" class="btn btn-danger btn-custom rounded-3 shadow-sm" [routerLink]="['/goback']" style="transition: 0.3s ease;"/>
+            </div>
+
+         
+           
+           <button type="submit" class="btn btn-success btn-block mt-4 submit-btn rounded-3 shadow-sm" [disabled]="!productForm.valid" style="transition: 0.3s ease; border-radius: 20px;">Submit</button>
+           </div>
+          </form>
+          
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+</body>
+

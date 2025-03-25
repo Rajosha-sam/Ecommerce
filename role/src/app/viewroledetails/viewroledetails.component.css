@@ -1,0 +1,85 @@
+/* Gradient Title */
+.text-gradient {
+  background: linear-gradient(to right, #6a11cb, #2575fc);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Glassmorphism Effect */
+.glassmorphism {
+  background: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(12px); /* Stronger blur effect for more emphasis */
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  padding: 20px;
+  transition: all 0.3s ease-in-out;
+}
+
+/* Card Hover Effect */
+.hover-effect {
+  transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+}
+
+.hover-effect:hover {
+  transform: translateY(-10px); /* Slightly stronger hover effect */
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+}
+
+/* Button Styles */
+.neumorphic-btn {
+  background: #e0e0e0;
+  border: none;
+  border-radius: 50px;
+  padding: 10px 25px;
+  font-weight: bold;
+  color: #333;
+  box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.15), -4px -4px 8px rgba(255, 255, 255, 0.7);
+  transition: all 0.3s ease-in-out;
+}
+
+.neumorphic-btn:hover {
+  background: #f8f9fa;
+  box-shadow: inset 4px 4px 6px rgba(0, 0, 0, 0.1), inset -4px -4px 6px rgba(255, 255, 255, 0.5);
+}
+
+/* Custom Styling for the Card Content */
+.card-body {
+  font-size: 1rem; /* Increase font size for readability */
+  color: #333; /* Darker text for better contrast */
+}
+
+/* Typography for Card Title */
+.card-title {
+  font-size: 1.25rem; /* Bigger title for emphasis */
+  font-weight: bold;
+  color: #007BFF; /* Custom blue color */
+}
+
+/* Badge Styling */
+.badge {
+  font-size: 1rem; /* Slightly bigger badge */
+  font-weight: bold;
+}
+
+/* Responsive Design: For smaller screens, improve card spacing */
+@media (max-width: 767px) {
+  .card-body {
+    padding: 15px; /* Reduce padding for smaller devices */
+  }
+}
+
+/* Hover Effect on Cards */
+.card {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card:hover {
+  transform: scale(1.05); /* Card zoom on hover */
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+}
+
+
+
+
+  
+  

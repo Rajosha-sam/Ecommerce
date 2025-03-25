@@ -1,0 +1,104 @@
+<body style="margin-top: 10%;">
+
+  <!-- Search Box -->
+  <div class="text-center my-3">
+    <input type="text" class="form-control w-50 mx-auto" placeholder="Search Product..." (input)="onSearch($event)" />
+  </div>
+
+  <!-- Product Grid -->
+  <div class="container">
+    <div class="row">
+      <!-- Product Card Loop -->
+      <div *ngFor="let product of filteredProducts; let i = index" class="col-md-4 col-sm-6 mb-4">
+        <div class="card shadow-lg rounded border-0 hover-card">
+          <div class="image-container position-relative">
+            <img [src]="product.imageUrl" (error)="onImageError(product)" class="product-image" alt="Product Image" />
+            <!-- Discount Badge -->
+            <div *ngIf="product.discount" class="discount-badge">
+              <span>-{{ product.discount }}%</span>
+            </div>
+          </div>
+          <div class="card-body">
+            <h5 class="card-title text-dark">{{ product.name }}</h5>
+            <p class="card-text text-muted">{{ product.description }}</p>
+            <ul class="list-unstyled">
+              <li><strong>Price:</strong> <span class="price">${{ product.price | number:'1.0-0' }}</span></li>
+              <li><strong>Stock:</strong> {{ product.stock }}</li>
+              <li><strong>Category:</strong> {{ product.category }}</li>
+              <li><strong>Rating:</strong>
+                <div class="rating-container">
+                  <!-- Temporary 5 stars for display -->
+                  <span class="star">&#9733;</span> <!-- Full Star -->
+                  <span class="star">&#9733;</span> <!-- Full Star -->
+                  <span class="star">&#9733;</span> <!-- Full Star -->
+                  <span class="star">&#9733;</span> <!-- Full Star -->
+                  <span class="star">&#9733;</span> <!-- Full Star -->
+                  <span class="rating-count">(5 reviews)</span>
+                </div>
+              </li>
+            </ul>
+            <!-- View Product Button (click to open modal) -->
+            <div class="d-flex justify-content-center mt-3">
+              <button class="btn btn-primary" (click)="openModal(product)">
+                <i class="fas fa-eye"></i> View Product
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Product Details Modal -->
+  <ng-template #productDetailsModal let-modal>
+    <div class="modal-header">
+      <h5 class="modal-title">{{ selectedProduct?.name }}</h5>
+      <button type="button" class="close" (click)="modal.dismiss()">
+        <span>&times;</span>
+      </button>
+    </div>
+    <div class="modal-body">
+      <div class="row">
+        <div class="col-md-6">
+          <img [src]="selectedProduct?.imageUrl" class="img-fluid rounded shadow-lg" alt="{{ selectedProduct?.name }}" (error)="onImageError(selectedProduct)">
+        </div>
+        <div class="col-md-6">
+          <h3>{{ selectedProduct?.name }}</h3>
+          <p><strong>Price:</strong> <span class="text-danger">${{ selectedProduct?.price }}</span></p>
+          <p><strong>Stock:</strong> {{ selectedProduct?.stock }} available</p>
+          <p><strong>Category:</strong> {{ selectedProduct?.category }}</p>
+          <p>{{ selectedProduct?.description }}</p>
+
+          <div *ngIf="selectedProduct?.freeDelivery">
+            <span class="badge bg-success">Free Delivery</span>
+          </div>
+
+          <div class="btn-group mt-3">
+            <button class="btn btn-primary mr-3" (click)="addToCart(selectedProduct)">
+              <i class="fas fa-cart-plus"></i> Add to Cart
+            </button>
+            <!-- Pink Wishlist Button -->
+            <button class="btn" style="background-color: rgb(218, 34, 144); color: white;" (click)="addToWishlist(selectedProduct)">
+              <i class="fas fa-heart"></i> Add to Wishlist
+            </button>
+          </div>
+
+          <div *ngIf="selectedProduct?.discount">
+            <p><strong>Discount:</strong> <span class="text-success">{{ selectedProduct?.discount }}% Off</span></p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="modal-footer">
+      <button type="button" class="btn btn-secondary" (click)="modal.dismiss()">Close</button>
+    </div>
+  </ng-template>
+
+</body>
+
+
+
+
+
+
+

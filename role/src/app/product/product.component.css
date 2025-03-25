@@ -1,0 +1,26 @@
+
+/* Global Body Styles */
+body {
+  background-color: #f0f7ff;
+  font-family: 'Roboto', sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+/* Container Spacing */
+.container {
+  margin-top: 2rem;
+}
+
+/* Card Styling */
+.card {
+  background: linear-gradient(to bottom right, #69e0c9, #cc9dd5);
+  border-radius: 20px;
+  padding: 20px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+
+
+
+  

@@ -1,0 +1,65 @@
+<body style="margin-top: 10%;">
+
+  <!-- Back Button -->
+  <!-- <button class="btn btn-secondary mb-3" routerLink="['/back']">
+    <i class="fas fa-arrow-left"></i> Back 
+  </button> -->
+
+  <!-- Cart Section -->
+  <div *ngIf="cartItems.length > 0; else emptyCart" class="cart-section">
+    <h2 class="text-center">Your Cart Details</h2>
+
+    <div class="cart-items-container">
+      <div *ngFor="let item of cartItems" class="cart-item">
+        <div class="cart-image-container">
+          <img [src]="item.imageUrl" (error)="onImageError($event)" class="cart-image" alt="Product">
+        </div>
+        <div class="cart-details">
+          <p class="cart-item-name">{{ item.name }}</p>
+          <p class="cart-item-price">${{ item.price | number: '1.0-0' }}</p>
+          <div *ngIf="item.discount > 0" class="discount-info">
+            <span class="discount-text">Discount: ₹{{ item.discountAmount | number: '1.0-0' }}</span>
+          </div>
+          <p class="cart-item-description">{{ item.description || 'No description available' }}</p>
+          <div class="rating-container">
+            <span class="stars">
+              <i class="fas fa-star" *ngFor="let star of [].constructor(item.rating); let i = index"></i>
+            </span>
+            <span class="rating-count">({{ item.ratingCount }} reviews)</span>
+          </div>
+          <div class="quantity-controls">
+            <button class="btn btn-sm btn-quantity" (click)="decreaseQuantity(item)">-</button>
+            <strong class="quantity">{{ item.quantity }}</strong>
+            <button class="btn btn-sm btn-quantity" (click)="increaseQuantity(item)">+</button>
+          </div>
+          <p class="cart-item-total">Total: ${{ (item.price * item.quantity) - (item.discountAmount || 0) | number: '1.0-0' }}</p>
+        </div>
+        <div class="cart-actions">
+          <button class="btn btn-remove" (click)="removeFromCart(item.id)">Remove</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="cart-summary text-center">
+      <p><strong>Total Items:</strong> {{ totalItems }}</p>
+      <p><strong>Total Price (After Discounts):</strong> ₹{{ totalPrice | number: '1.0-0' }}</p>
+    </div>
+
+    <!-- Buy Now Button -->
+    <div class="buy-now-container text-center mt-3">
+      <button class="btn btn-primary" (click)="confirmOrder()">Buy Now</button>
+    </div>
+
+  </div>
+
+  <ng-template #emptyCart>
+    <div class="alert alert-warning text-center">
+        Your cart is empty.
+    </div>
+</ng-template>
+
+</body>
+
+
+
+ 

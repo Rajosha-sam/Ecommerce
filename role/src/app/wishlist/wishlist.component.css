@@ -1,0 +1,54 @@
+.wishlist-item {
+    position: relative;
+    overflow: hidden; /* Prevent image overflow */
+    border-radius: 8px;
+}
+
+.card-img-top {
+    object-fit: cover;
+    height: 300px;
+    width: 250px; /* Use full width of the card container */
+    transition: transform 0.3s ease-in-out;
+    display: block; /* Makes the image a block element */
+    margin-left: auto; /* Center horizontally */
+    margin-right: auto; /* Center horizontally */
+}
+
+.wishlist-item:hover .card-img-top {
+    transform: scale(1.05); /* Slight zoom effect */
+}
+
+.overlay {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: rgba(0, 0, 0, 0.6);
+    color: white;
+    opacity: 0;
+    transition: opacity 0.3s;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.wishlist-item:hover .overlay {
+    opacity: 1;
+}
+
+.overlay-content {
+    text-align: center;
+    padding: 10px;
+}
+
+.wishlist-description {
+    font-size: 0.9rem;
+    color: #ddd;
+    margin-bottom: 15px;
+}
+
+.custom-margin {
+    margin-left: 10px; /* Adjust this value as needed */
+}

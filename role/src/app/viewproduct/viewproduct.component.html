@@ -1,0 +1,68 @@
+<body style="margin-top: 10%;">
+<div class="container">
+  <div class="text-center my-3">
+    <input type="text" class="form-control w-50 mx-auto" placeholder="Search Product..." (input)="onSearch($event)" />
+  </div>
+  
+  <!-- Buttons for Add Product and View Cart -->
+  <div class="d-flex justify-content-end mt-3 gap-3">
+    <a [routerLink]="['/product']" class="btn btn-success shadow-lg">
+      <i class="fas fa-plus-circle"></i> Add Product
+    </a>
+    
+  </div><br>
+  
+  
+  
+
+
+
+  <!-- Display products -->
+  <div class="card-body">
+    <div class="row">
+      <!-- Loop through filtered products and display each product -->
+      <div *ngFor="let product of filteredProducts; let i = index" class="col-md-4 mb-4">
+        <div class="card shadow-lg rounded border-primary border-3 hover-card">
+          <div class="image-container">
+            <img [src]="product.imageUrl" (error)="onImageError(product)" 
+                 class="product-image" alt="Product Image" />
+          </div>
+          <div class="card-body">
+            <h5 class="card-title text-primary">{{ product.name }}</h5>
+            <p class="card-text">{{ product.description }}</p>
+            <ul class="list-unstyled">
+              <li><strong>Price:</strong> ${{ product.price }}</li>
+              <li><strong>Stock:</strong> {{ product.stock }}</li>
+              <li><strong>Category:</strong> {{ product.category }}</li>
+              <li><strong>User ID:</strong> {{ product.userId }}</li>
+            </ul>
+            <div class="d-flex justify-content-end">
+              <button class="btn btn-danger btn-sm mx-2" [disabled]="isCustomer" (click)="onDelete(product.id)">
+                <i class="fas fa-trash-alt"></i> Delete
+              </button>
+              <button class="btn btn-warning btn-sm mx-2" [disabled]="isCustomer" [routerLink]="['/editt', product.id]">
+                <i class="fas fa-edit"></i> Edit
+              </button>
+              
+              
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Message if no products are found -->
+    <div *ngIf="filteredProducts.length === 0 && searchQuery !== ''" class="alert alert-warning text-center">
+      No products found matching your search term.
+    </div>
+  </div>
+</div>
+
+</body>
+
+
+
+
+
+
+

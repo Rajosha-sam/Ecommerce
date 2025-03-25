@@ -1,0 +1,87 @@
+<!-- Navbar: Only visible when showNavbar is true -->
+<nav  class="navbar navbar-expand-lg navbar-dark bg-primary shadow-lg py-3 fixed-top" *ngIf="showNavbar | async">
+  <div class="container-fluid">
+    
+    <!-- Logo on the left -->
+    <a class="navbar-brand fw-bold text-white d-flex align-items-center gap-2 me-auto" [routerLink]="['/']">
+      <img src="ayn.jpeg" class="logo" width="150" height="150">
+
+      <em>ALLYOUNEED  shop ♡∞</em>
+  </a>
+  
+
+    <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" 
+            data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" 
+            aria-label="Toggle navigation">
+      <i class="fas fa-bars text-white"></i>
+    </button>
+
+    <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+      <ul class="navbar-nav me-3">
+        <ng-container *ngIf="isAdmin">
+          <li class="nav-item">
+            <a class="nav-link text-white fw-bold" [routerLink]="['/adduser']">
+              <i class="fas fa-user-plus"></i> User
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link text-white fw-bold" [routerLink]="['/addrole']">
+              <i class="fas fa-users-cog"></i>  Role
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link text-white fw-bold" [routerLink]="['/viewproduct']">
+              <i class="fas fa-box-open"></i> View Products
+            </a>
+            <!-- Add this to your main HTML file (e.g., app.component.html or a navigation component) -->
+
+
+          </li>
+        </ng-container>
+
+        <ng-container *ngIf="isCustomer">
+          <li class="nav-item">
+            <a class="nav-link text-white fw-bold" [routerLink]="['/viewcustomerproduct']">
+              <i class="fas fa-box-open"></i> View Products
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link text-white fw-bold" [routerLink]="['/viewcart']">
+              <i class="fas fa-shopping-cart"></i> Cart
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link text-white fw-bold" [routerLink]="['/wishlist']">
+              <i class="fas fa-heart"></i> Wishlist
+            </a>
+          </li>
+          
+        </ng-container>
+      </ul>
+
+      <!-- Logout Button -->
+      <button class="btn btn-danger" (click)="logout()">
+        <i class="fas fa-sign-out-alt"></i> Logout
+      </button>
+    </div>
+  </div>
+</nav>
+
+
+
+
+
+
+
+<router-outlet></router-outlet>
+
+
+
+
+
+
+
+
+
+
+

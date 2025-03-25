@@ -1,0 +1,75 @@
+<body style="margin-top: 5%;">
+<div class="container-fluid min-vh-100 d-flex align-items-center justify-content-center" style="background: #f0f8ff;">
+    <div class="card shadow-lg p-4" style="width: 450px; border-radius: 16px; box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);">
+        <!-- Card Header with Gradient and Icon -->
+        <div class="card-header text-center text-white fw-bold" style="background: linear-gradient(45deg, #1d2671, #c33764); border-radius: 16px 16px 0 0;">
+            <h4><i class="bi bi-person-circle"></i> Add Role</h4>
+        </div>
+        
+        <!-- Card Body with Form -->
+        <div class="card-body">
+            <form [formGroup]="form" (ngSubmit)="onsubmit()">
+                <!-- Role Name Input -->
+                <div class="mb-4">
+                    <label class="form-label fw-semibold"><i class="bi bi-card-text"></i> Role Name</label>
+                    <input type="text" class="form-control border-primary shadow-sm" formControlName="name" placeholder="Enter role name" required>
+                </div>
+
+                <!-- Submit Button -->
+                <button type="submit" class="btn btn-primary w-100 py-2"><i class="bi bi-check-circle"></i> Submit</button>
+
+                <!-- Action Buttons -->
+                <div class="d-flex justify-content-between mt-4">
+                    <a class="btn btn-outline-primary btn-sm text-center d-flex justify-content-center mx-auto" [routerLink]="['/addrole']">
+                        <i class="bi bi-eye"></i> View Roles
+                      </a>
+                      
+                    <!-- <a class="btn btn-outline-secondary btn-sm" [routerLink]="['/goback']"><i class="bi bi-arrow-left"></i> Go Back</a> -->
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+</body>
+
+<style>
+    /* Subtle Hover Effect for Cards */
+    .card:hover {
+        box-shadow: 0 8px 15px rgba(0, 0, 0, 0.15);
+        transform: translateY(-5px);
+        transition: all 0.3s ease-in-out;
+    }
+
+    /* Button Hover Effects */
+    .btn:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 5px 12px rgba(0, 0, 0, 0.1);
+    }
+
+    /* Form Field Input Styling */
+    .form-control {
+        border-radius: 8px;
+        font-size: 1rem;
+    }
+</style>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

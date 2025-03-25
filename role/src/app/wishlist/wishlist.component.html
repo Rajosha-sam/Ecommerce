@@ -1,0 +1,47 @@
+<body style="margin-top: 10%;">
+    <div class="container">
+        <h2 class="text-center mb-4">Your Wishlist</h2>
+
+        <div *ngIf="wishlistItems.length > 0; else noItems" class="row">
+            <div *ngFor="let product of wishlistItems" class="col-md-4 mb-4">
+                <div class="wishlist-item card">
+                    <img [src]="product.imageUrl" class="card-img-top" alt="Product Image">
+                    <div class="overlay">
+                        <div class="overlay-content">
+                            <h5>{{ product.name }}</h5>
+                            <p class="wishlist-price"><strong>Price:</strong> ${{ product.price }}</p>
+                            <p class="wishlist-description">{{ product.description }}</p> <!-- Added description here -->
+                            <button class="btn btn-warning" (click)="moveToCart(product)">
+                                <i class="fas fa-cart-plus"></i> Move to Cart
+                            </button>
+                            <button class="btn btn-danger custom-margin" (click)="removeFromWishlist(product)">
+                                <i class="fas fa-trash-alt"></i> Remove
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <ng-template #noItems>
+            <div class="alert alert-warning text-center">
+                Your wishlist is empty.
+            </div>
+        </ng-template>
+    </div>
+</body>
+
+
+  
+  
+  
+
+
+
+
+
+
+
+
+  
+  

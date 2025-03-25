@@ -1,0 +1,45 @@
+/* Image container */
+.image-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 220px; /* Ensure enough height for the image */
+  background-color: rgb(255, 255, 255);
+  border-radius: 10px;
+  overflow: hidden;
+  position: relative; /* This is to make sure any absolutely positioned elements are contained */
+  width: 100%; /* Ensure full width for the image */
+}
+
+/* Styling the product image */
+.product-image {
+  max-width: 100%; /* Prevents the image from overflowing */
+  max-height: 100%; /* Ensures the image doesn't overflow in height */
+  object-fit: cover; /* Ensures the image covers the container */
+  transition: transform 0.3s ease-in-out;
+}
+
+/* Hover effect on image */
+.product-image:hover {
+  transform: scale(1.1); /* Slight zoom effect when hovered */
+}
+.card {
+  border: 2px solid #343a40 !important; /* Dark border */
+  transition: all 0.3s ease-in-out; /* Smooth effect */
+}
+
+.card:hover {
+  border-color: #007bff !important; /* Blue on hover */
+  transform: scale(1.02); /* Slight zoom effect */
+}
+
+.card-header {
+  background: linear-gradient(to right, #007bff, #6610f2); /* Gradient header */
+  color: white;
+  font-weight: bold;
+}
+
+.image-container {
+  border-bottom: 2px solid #343a40; /* Border under image */
+  padding-bottom: 10px;
+}

@@ -1,0 +1,168 @@
+<body style="margin-top: 10%;">
+
+  <h1 class="text-center mb-4 text-primary fw-bold fst-italic">USER LIST</h1>
+
+  <!-- Role Dropdown (Moved to the right) -->
+  <div class="container mb-3 d-flex justify-content-end">
+    <label for="roleSelect" class="fw-bold me-2">Search Role:</label>
+    <select id="roleSelect" class="form-select w-auto" (change)="onRoleChange($event)">
+      <option value="">All</option>
+      <option value="admin">Admin</option>
+      <option value="customer">Customer</option>
+      <option value="seller">Seller</option>
+    </select>
+  </div>
+
+  <!-- Enhanced User Table -->
+  <div class="table-responsive">
+    <table class="table table-striped table-bordered table-hover shadow-sm rounded">
+      <thead class="thead-light text-center">
+        <tr>
+          <th>ID</th>
+          <th>Name</th>
+          <th>Email</th>
+          <th>Role ID</th>
+          <th>Gender</th>
+          <th>Last Name</th>
+          <th>Mobile</th>
+          <th>Date of Birth</th>
+          <th>Address</th>
+          <th>Status</th>
+          <th class="text-center">Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let user of users | userFilter: selectedRole; trackBy: trackByUserId" class="text-center">
+          <td>{{ user.id }}</td>
+          <td>{{ user.name }}</td>
+          <td>{{ user.email }}</td>
+          <td>{{ user.roleId }}</td>
+          <td>{{ user.userDetails?.gender || 'N/A' }}</td>
+          <td>{{ user.userDetails?.lastName || 'N/A' }}</td>
+          <td>{{ user.userDetails?.mobile || 'N/A' }}</td>
+          <td>{{ user.userDetails?.dateOfBirth || 'N/A' }}</td>
+          <td>{{ user.userDetails?.address || 'N/A' }}</td>
+          <td class="text-center">
+            <span class="badge" [ngClass]="user.isActive ? 'bg-success' : 'bg-warning'">
+              {{ user.isActive ? 'Active' : 'Inactive' }}
+            </span>
+          </td>
+          <td class="text-center">
+            <div class="btn-group" role="group">
+              <button class="btn btn-danger btn-sm mx-1" (click)="onDelete(user.id)" title="Delete User">
+                <i class="fas fa-trash-alt"></i> Delete
+              </button>
+              <button class="btn btn-primary btn-sm mx-1" [routerLink]="['/edit', user.id]" title="Edit User">
+                <i class="fas fa-edit"></i> Edit
+              </button>
+              <button class="btn" [ngClass]="user.isActive ? 'btn-warning' : 'btn-success'"
+                      (click)="toggleUserStatus(user)" [disabled]="user.isActive === null"
+                      title="Toggle User Status">
+                <i class="fas" [ngClass]="user.isActive ? 'fa-times-circle' : 'fa-check-circle'"></i>
+                {{ user.isActive ? 'Deactivate' : 'Activate' }}
+              </button>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <style>
+    /* Styling for the Table */
+    table {
+      border-collapse: collapse;
+      width: 100%;
+      font-family: Arial, sans-serif;
+    }
+
+    th, td {
+      padding: 12px;
+      text-align: center;
+      border: 1px solid #ddd;
+    }
+
+    th {
+      background-color: #f4f4f4;
+      color: #333;
+      font-weight: bold;
+    }
+
+    tbody tr:nth-child(even) {
+      background-color: #f9f9f9;
+    }
+
+    tbody tr:hover {
+      background-color: #f1f1f1;
+    }
+
+    .badge {
+      font-size: 0.9rem;
+      padding: 0.5rem;
+    }
+
+    .btn-group .btn {
+      margin: 5px 0;
+      transition: transform 0.3s ease;
+    }
+
+    .btn-group .btn:hover {
+      transform: scale(1.05);
+    }
+
+    .btn {
+      font-size: 0.875rem;
+      padding: 8px 16px;
+    }
+
+    .btn-danger {
+      background-color: #dc3545;
+      border-color: #dc3545;
+    }
+
+    .btn-primary {
+      background-color: #007bff;
+      border-color: #007bff;
+    }
+
+    .btn-success {
+      background-color: #2b7e3f;
+      border-color: #28a745;
+    }
+
+    .btn-warning {
+      background-color: #ffc107;
+      border-color: #ffc107;
+    }
+
+    /* Responsive Table for smaller screens */
+    @media (max-width: 768px) {
+      table, th, td {
+        font-size: 12px;
+      }
+
+      .btn-group .btn {
+        padding: 5px 10px;
+      }
+    }
+
+    /* Additional Shadow for the Table */
+    .table {
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+  </style>
+
+</body>
+
+
+
+
+
+
+
+
+
+
+
+
+      
